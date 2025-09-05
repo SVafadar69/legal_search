@@ -24,7 +24,6 @@ aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
 aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
 groq_api_key = st.secrets["GROQ_API_KEY"]
 openai_api_key = st.secrets["OPENAI_API_KEY"]
-gemini_api_key = st.secrets["GEMINI_API_KEY"]
 
 # aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
 # aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
