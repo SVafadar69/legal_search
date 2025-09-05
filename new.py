@@ -7,7 +7,7 @@ def case_text_search_citations_list(query: str):
     query = query    # required, supports advanced syntax
     search_type = "full_text"     # "full_text" or "name" (default "full_text")
     doc_type = "cases"            # "cases" or "laws" (default "cases")
-    size = 5                    # optional, max 50
+    size = 3                    # optional, max 50
     search_language = "en"        # "en" or "fr" (default "en")
     sort_results = "default"      # "default", "newest_first", "oldest_first"
     dataset = "CHRT,SCC,ONCA"     # optional, comma-separated dataset codes

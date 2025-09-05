@@ -10,8 +10,7 @@ from xai_sdk import Client
 import json
 import boto3
 import streamlit as st
-aws_access_key_id = st.secrets("AWS_ACCESS_KEY_ID")
-aws_secret_access_key = st.secrets("AWS_SECRET_ACCESS_KEY")
+
 
 from openai import OpenAI, APIError
 
@@ -21,10 +20,20 @@ from new import (case_text_search_citations_list, retrieve_citation_text)
 
 load_dotenv()
 
-
+aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
+aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
 groq_api_key = st.secrets["GROQ_API_KEY"]
 openai_api_key = st.secrets["OPENAI_API_KEY"]
 gemini_api_key = st.secrets["GEMINI_API_KEY"]
+
+# aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
+# aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+# groq_api_key = os.getenv("GROQ_API_KEY")
+# groq_api_key = st.secrets["GROQ_API_KEY"]
+# openai_api_key = os.getenv("OPENAI_API_KEY")
+# gemini_api_key = os.getenv("GEMINI_API_KEY")
+
+print(groq_api_key)
 
 def retrieve_prompt(mode: str = "r", encoding: str = 'utf-8', prompt_path: str = 'law_query.md') -> str:
     with open(prompt_path, mode, encoding=encoding) as file:
@@ -168,7 +177,7 @@ if st.button("🔍 Search Cases", type="primary"):
     # Check if there's a query before proceeding
     if user_query:
         legal_prompt = retrieve_prompt().replace("{{USER_QUERY}}", user_query)
-        new_query = stream_llama(legal_prompt, api_key=groq_api_key)
+        new_query = hipaa_opus(legal_prompt, api_key=groq_api_key)
         citations = case_text_search_citations_list(new_query)
         citation_texts = retrieve_citation_text(citations)
         st.write(new_query)
@@ -179,7 +188,7 @@ if st.button("🔍 Search Cases", type="primary"):
                 # Get a fresh copy of the section prompt template for each iteration
                 section_prompt = retrieve_section_prompt()
                 section_prompt = section_prompt.replace("{{USER_QUERY}}", user_query).replace("{{TEXT}}", text)
-                section = hipaa_haiku(section_prompt)
+                section = hipaa_opus(section_prompt)
                 st.write(f'Case Number: {index}')
                 st.write(f'Case Citation: {citations[index-1]}')
                 st.write(section)
