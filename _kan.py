@@ -176,7 +176,7 @@ if st.button("🔍 Search Cases", type="primary"):
     # Check if there's a query before proceeding
     if user_query:
         legal_prompt = retrieve_prompt().replace("{{USER_QUERY}}", user_query)
-        new_query = hipaa_opus(legal_prompt, api_key=groq_api_key)
+        new_query = hipaa_opus(legal_prompt)
         citations = case_text_search_citations_list(new_query)
         citation_texts = retrieve_citation_text(citations)
         st.write(new_query)
