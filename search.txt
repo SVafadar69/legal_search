@@ -1,0 +1,12 @@
+"" -> search term more than one word: phrase searching 
+* -> search term has multiple endings - retrieves all possible ending of search term
+AND -> search for documents that contain more than one search term 
+OR -> search for docs that contain synonyms (similar terms)
+* -> all endings: singular or plural 
+() -> priority to an operator
+
+automate boolean search process -> retrieve relevant section 
+statute: written law 
+case: judicial decisions in courts
+2022 SCC 6 - neutral citation: supreme court of canada decision
+1 SCR 29 - reporter citation: where case law is published
