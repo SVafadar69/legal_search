@@ -3,7 +3,6 @@ import requests
 import pandas as pd
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
 import os
 from typing import Optional, Callable
 import time

@@ -23,3 +23,7 @@ roboflow==1.2.7
 six==1.17.0
 tqdm==4.67.1
 urllib3==2.5.0
+xai-sdk
+boto3
+openai
+groq
