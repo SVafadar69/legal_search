@@ -9,8 +9,8 @@ import time
 from xai_sdk import Client
 import json
 import boto3
-aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
-aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+aws_access_key_id = st.secrets("AWS_ACCESS_KEY_ID")
+aws_secret_access_key = st.secrets("AWS_SECRET_ACCESS_KEY")
 
 from openai import OpenAI, APIError
 import streamlit as st
@@ -20,9 +20,10 @@ from new import (case_text_search_citations_list, retrieve_citation_text)
 
 load_dotenv()
 
-groq_api_key = os.getenv("GROQ_API_KEY")
-openai_api_key = os.getenv("OPENAI_API_KEY")
-gemini_api_key = os.getenv('GEMINI_API_KEY')
+
+groq_api_key = st.secrets["GROQ_API_KEY"]
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+gemini_api_key = st.secrets["GEMINI_API_KEY"]
 
 def retrieve_prompt(mode: str = "r", encoding: str = 'utf-8', prompt_path: str = 'law_query.md') -> str:
     with open(prompt_path, mode, encoding=encoding) as file:
