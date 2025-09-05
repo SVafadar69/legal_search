@@ -9,11 +9,12 @@ import time
 from xai_sdk import Client
 import json
 import boto3
+import streamlit as st
 aws_access_key_id = st.secrets("AWS_ACCESS_KEY_ID")
 aws_secret_access_key = st.secrets("AWS_SECRET_ACCESS_KEY")
 
 from openai import OpenAI, APIError
-import streamlit as st
+
 from groq import Groq
 from xai_sdk.chat import user
 from new import (case_text_search_citations_list, retrieve_citation_text)
